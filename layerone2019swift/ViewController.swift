@@ -95,30 +95,34 @@ class ViewController: UIViewController {
 
     
     func scalingFactor() {
-        var vrect = UIScreen.main.bounds
-        var widthfactor = (vrect.size.width / 1920)
-        var heightfactor = (vrect.size.height / 1080)
-        print("Heightfactor: \(heightfactor) widthFactor: \(widthfactor)")
-        // 1080p origin 840:210
-        //1080p width 730
-        //1080p height 511
-        imageView.left = (835*widthfactor)
-        imageView.top = (360 * heightfactor)
-        imageView.width = (735 * widthfactor)
-        imageView.height = (515 * heightfactor)
+        let factor = getScalingFactor()
+        imageView.left = (factor.origin.x)
+        imageView.top = (factor.origin.y)
+        imageView.width = (factor.width)
+        imageView.height = (factor.height)
         imageView.layer.cornerRadius = 4;
         imageView.layer.masksToBounds = true;
     }
     
     func getScalingFactor() -> CGRect {
-        var vrect = UIScreen.main.bounds
-        var widthfactor = (vrect.size.width / 1920)
+        let vrect = UIScreen.main.bounds
+        let widthfactor = (vrect.size.width / 1920)
         var heightfactor = (vrect.size.height / 1080)
-        print("Heightfactor: \(heightfactor) widthFactor: \(widthfactor)")
-        // 1080p origin 840:210
-        //1080p width 730
-        //1080p height 511
-        let outrect = CGRect(x: (835*widthfactor), y: (360 * heightfactor), width: (735 * widthfactor), height: (515 * heightfactor))
+        //1080p origin 835:360
+        //1080p width 735
+        //1080p height 515
+        var outrect = CGRect()
+        // hacky stuff to deal with non-16:9 ratio screens
+        if widthfactor > heightfactor+0.01 {
+            //print("width above height Heightfactor: \(heightfactor) widthFactor: \(widthfactor)")
+            let heightadjust = widthfactor/heightfactor
+            let yadjust = (widthfactor - heightfactor)
+            outrect = CGRect(x: (835*widthfactor), y: (360 * heightfactor)/heightadjust, width: (735 * widthfactor), height: (515 * heightfactor)*(heightadjust+yadjust))
+        }
+        else {
+            //print("Heightfactor: \(heightfactor) widthFactor: \(widthfactor)")
+            outrect = CGRect(x: (835*widthfactor), y: (360 * heightfactor), width: (735 * widthfactor), height: (515 * heightfactor))
+        }
         return outrect
     }
 

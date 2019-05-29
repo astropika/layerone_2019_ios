@@ -28,7 +28,7 @@ class FullViewController: UIViewController {
         staticavPlayerLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
         staticplayer.actionAtItemEnd = .none
         staticplayer.volume = 0
-        staticavPlayerLayer.frame = imageView.layer.frame
+        staticavPlayerLayer.frame = UIScreen.main.bounds
         staticavPlayerLayer.masksToBounds = true;
         
         view.layer.insertSublayer(staticavPlayerLayer, at: 1)

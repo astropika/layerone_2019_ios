@@ -177,9 +177,8 @@
                                 <rect key="frame" x="323" y="177" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
-                            <view contentMode="scaleAspectFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZyQ-Q8-v7m">
+                            <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZyQ-Q8-v7m">
                                 <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" image="YES"/>
@@ -187,6 +186,14 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ZyQ-Q8-v7m" firstAttribute="centerX" secondItem="epx-pk-s4C" secondAttribute="centerX" id="1YV-zd-xQn"/>
+                            <constraint firstItem="ZyQ-Q8-v7m" firstAttribute="leading" secondItem="epx-pk-s4C" secondAttribute="leading" id="9G4-7d-feP"/>
+                            <constraint firstItem="ZyQ-Q8-v7m" firstAttribute="trailing" secondItem="epx-pk-s4C" secondAttribute="trailing" id="GAX-oF-Reu"/>
+                            <constraint firstItem="ZyQ-Q8-v7m" firstAttribute="centerY" secondItem="epx-pk-s4C" secondAttribute="centerY" id="Khp-Dt-C5T"/>
+                            <constraint firstItem="ZyQ-Q8-v7m" firstAttribute="top" secondItem="epx-pk-s4C" secondAttribute="top" id="QeW-Nc-VJn"/>
+                            <constraint firstItem="ZyQ-Q8-v7m" firstAttribute="bottom" secondItem="epx-pk-s4C" secondAttribute="bottom" id="RKH-iR-BQm"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="0ub-5R-RNv"/>
                     </view>
                     <connections>
