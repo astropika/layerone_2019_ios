@@ -14,6 +14,7 @@ class FullViewController: UIViewController {
 
     var staticplayer: AVPlayer!
     var staticavPlayerLayer: AVPlayerLayer!
+    var saved_outlet:Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +52,8 @@ class FullViewController: UIViewController {
             stream.play() // Play the stream
         }
         stream.setImageView(view: imageView)
-        stream.image_outlet = 3;
+        stream.image_outlet = 3
+        saved_outlet = 3
         stream.hideImageView()
     }
     @objc func staticPlayerItemDidReachEnd(notification: Notification) {
@@ -61,6 +63,8 @@ class FullViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        stream.hideImageView()
+        stream.setOutlet(saved_outlet!)
         stream.setImageView(view: imageView)
         staticplayer.play()
     }
@@ -72,16 +76,23 @@ class FullViewController: UIViewController {
         showMenuDialog(actionTitle:[1:"Laugh", 2:"Features", 3:"Highlight", 4: "Eye",5:"Nothing"]) {
             (input:Int?) in
             switch (input){
-            // eye highlight mode
+            // this is very silly but
+            // maybe we want to do special things
+            // for a given outlet at some point?
             case 1:
+                self.saved_outlet = 4
                 stream.setOutlet(4)
             case 2:
+                self.saved_outlet = 5
                 stream.setOutlet(5)
             case 3:
+                self.saved_outlet = 2
                 stream.setOutlet(2)
             case 4:
+                self.saved_outlet = 1
                 stream.setOutlet(1)
             case 5:
+                self.saved_outlet = 3
                 stream.setOutlet(3)
             default:
                 break

@@ -129,8 +129,9 @@ class ViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        stream.setImageView(view: imageView)
+        stream.hideImageView()
         stream.image_outlet = 1;
+        stream.setImageView(view: imageView)
         player.play()
         staticplayer.play()
     }
